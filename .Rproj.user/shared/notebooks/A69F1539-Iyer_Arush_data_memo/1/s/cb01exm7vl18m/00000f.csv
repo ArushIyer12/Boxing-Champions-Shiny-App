@@ -1,0 +1,4 @@
+"0","# reading the data"
+"0","champs <- read_csv('data/IBF_Champions.csv')"
+"2","Error: 'data/IBF_Champions.csv' does not exist in current working directory ('/Users/arushiyer/Documents/GitHub/Boxing-Champions-Shiny-App').
+"

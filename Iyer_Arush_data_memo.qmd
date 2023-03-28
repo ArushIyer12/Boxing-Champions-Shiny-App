@@ -1,0 +1,74 @@
+---
+title: "Final Project Data Memo"
+subtitle: "Data Visualization (STAT 302)"
+author: "Arush Iyer"
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    
+execute:
+  warning: false
+---
+
+::: callout-important
+## Memo format
+
+Like all other submissions for this course, we expect the the memo to be neat and well organized.
+:::
+
+## Instructions
+
+After selecting data for the final project write up a short memo that at minimum covers the following:
+
+### Data source
+
+```{r}
+# loading packages
+library(tidyverse)
+library(skimr)
+```
+
+```{r}
+# reading the data
+champs <- read_csv('Final_App/data/All_Champs.csv')
+```
+
+```{r}
+skim(champs)
+```
+
+The data set I read in above is a list of all boxers who have been recognized by a world champion by the International Boxing Federation (IBF). I wrote a simple Python program that uses BeautifulSoup to scrape [this wikipedia article](https://en.wikipedia.org/wiki/List_of_IBF_world_champions). I then cleaned up the data a bit to get some more interesting columns. Within the scraper, I added a mini-scraper that goes to the Wikipedia articles for each boxer and adds their Nationality, Stance, Reach, and Height to the dataframe.
+
+In boxing, there are four sanctioning bodies who can recognize fighters as world champions: The IBF, the WBC, the WBA, and the WBO. I plan to scrape the Wikipedia articles for each of these sanctioning bodies and create a giant data set that contains information on every boxer who has ever been recognized as a world champion. Since this is a data set that I am compiling myself, I can't link it here and Canvas won't allow me to submit a csv.
+
+If this doesn't work out, I have another data set I can use. It comes from [here](https://www.narcis.nl/dataset/RecordID/oai%3Aeasy.dans.knaw.nl%3Aeasy-dataset%3A131458) and contains a list of information on all bouts sanctioned by the Nevada State Athletic Commission (NSAC). I've used it for another project. It contains data meant for STATA, but I've cleaned it before. I made it into 5 different data sets (used for an interactive SQL database). There are no missing values for the important variables which is very nice.
+
+### Why this data
+
+I am a huge boxing fan, but unlike other sports, the state of boxing data is atrocious. If I want a data set of all NBA players who have made the all-star game, I could find that with a simple Google search. With boxing, most data sets available are not useful for any sort of analysis. Moreover, boxing is a really hard sport to get into. Intuitively, one would think that there would be only one champion per weight class. Boxing defies such logic.
+
+The end goal of my analysis is to create an interesting dashboard, both for boxing fans and for people interested in getting into the sport.
+
+### Visualization plan
+
+I plan to build a dashboard of mainly animated graphics. I have three main components I want to build in.
+
+1.  A histogram depicting distributions of height and reach for fighters from different weight classes and nationalities
+2.  A plot (unsure which one) that allows users to see how many fighters come from a particular country and which weight class they predominantly fought in
+3.  A timeline/some kind of lineplot where users can select a date and can instantly find out which boxers were recognized as champions at that point in time. This is the meat of my dashboard, but if it proves too difficult I might have to simplify it for myself
+
+### Initial data issues
+
+There are a few problems. Wikipedia profile articles for boxers are not standardized. Many do not have information on a boxer's height and reach (they almost always have information on nationality and stance). In some cases, a boxer might be so obscure that no information on them exists.
+
+The only site with consistently reliable information, boxrec.com, really does not want you to scrape their site (Lots of CAPTCHA Challenges and Rate Limiting). Unfortunately, the only solution seems to be for me to manually enter that information. I'm using this data set for a personal project anyways, so I'll have to do it at some point.
+
+### Misc
+
+n/a
+
+### Demonstration of organization (
+
+![](images/Screen%20Shot%202023-02-19%20at%205.32.47%20PM.png)
